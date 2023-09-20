@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Loyalty Program</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'home.css' %}">    
+    </head>
+    <body>
+        {% block content %}
+        {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <div>
+            <ul id="nav">
+                <li class="menu"><a href="#home">Home</a></li>
+                <li class="menu"><a href="#exchange">Exchange</a></li>
+                <li class="menu"><a href="#contact">Contact</a></li>
+                <li class="menu"><a href="#about">About</a></li>
+            </ul>
+        </div>
+        <center><h1>Loyalty Program</h1></center>
+        {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'auth/login' %}">Log In</a>
+        {% endif %}
+        {% endblock %}
+    </body>
+</html>
