@@ -1,12 +1,16 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<form action='' method=POST>
-    {% csrf_token %}
-    <label for="name"><b>CATEGORY</b></label>
-    <input type="text" placeholder="Enter category name" name="name" id="name" required>
-    <button type="submit">Add</button>
-    <button><a href='/loyalty/category'>Cancel</a></button>
+{% extends 'base.html' %} {% block content %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <label for="name"><b>CATEGORY</b></label>
+  <input
+    type="text"
+    placeholder="Enter category name"
+    name="name"
+    id="name"
+    required
+  />
+  <button type="submit">Add</button>
+  <button><a href="/loyalty/category">Cancel</a></button>
 </form>
 
 {% endblock %}
