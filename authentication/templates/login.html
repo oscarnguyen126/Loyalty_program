@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="{% static 'login.css' %}">
     </head>
     <body>
-        <form action='' method=POST>
+        <center><h2>Login</h2></center>
+        <form id="login_form" action='' method=POST>
             {% csrf_token %}
-            <div class="container">
                 <label for="username"><b>Username</b></label>
                 <input class="input_infor" type="text" placeholder="Enter Username" name="username" required>
             
@@ -20,8 +20,9 @@
                 <input class="input_infor" type="password" placeholder="Enter Password" name="password" required>
             
                 <button type="submit">Login</button>
-                <span>Forgot <a href="#">password?</a></span>
-            </div>
+                <center><span>Forgot <a href="#">password?</a></span></center>
+                <center><a href="/auth/register">Register?</a></center>
+
         </form>
     </body>
 </html>

@@ -29,3 +29,47 @@ body {
 h1 {
     color: goldenrod;
 }
+
+.pack_container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.package {
+  background-color: #333;
+  margin-bottom: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 50%;
+}
+
+.package a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.add_btn {
+  background-color: #333;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.add_btn a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
