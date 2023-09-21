@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<center>
+  <h2 style="margin-bottom: 50px; margin-top: 50px">{{ cat.name }}</h2>
+</center>
+<button class="add_btn">
+  <a href="/loyalty/categories/{{ cat.id }}/products">New product</a>
+</button>
+<div class="product_container">
+  {% for product in products %}
+  <div class="product_info">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+    <p>{{ product.expired_time }}</p>
+    <p>{{ product.price }} points</p>
+    <button class="exchange_btn"><a href="#">Exchange</a></button>
+  </div>
+  {% endfor %}
+</div>
+
+<center>
+  <button class="back_btn"><a href="/loyalty/categories">Back</a></button>
+</center>
+
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}

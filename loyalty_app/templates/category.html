@@ -1,13 +1,22 @@
-{% extends 'base.html' %} {% block content%}
+{% extends 'base.html' %} {% block content%} {% if user.is_authenticated %}
 <div class="pack_container">
   {% for cat in cats %}
   <button class="package">
-    <a href="categories/{{ cat.id }}">{{ cat.name }}</a>
+    <a href="/loyalty/categories/{{ cat.id }}">{{ cat.name }}</a>
   </button>
   {% endfor %}
   <button class="add_btn">
     <a href="/loyalty/new_category">Add category</a>
   </button>
 </div>
-
-{% endblock %}
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <form action="" method="POST">
   {% csrf_token %}
   <label for="name"><b>CATEGORY</b></label>
@@ -10,7 +10,17 @@
     required
   />
   <button type="submit">Add</button>
-  <button><a href="/loyalty/category">Cancel</a></button>
+  <button><a href="/loyalty/categories">Cancel</a></button>
 </form>
 
-{% endblock %}
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}

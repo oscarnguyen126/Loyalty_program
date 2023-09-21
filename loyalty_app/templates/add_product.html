@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<form class="add_product" action="" method="POST">
+  {% csrf_token %}
+  <div class="input_product_info">
+    <label for="name"><b>Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter product name"
+      name="name"
+      id="name"
+      required
+    />
+  </div>
+
+  <div class="input_product_info">
+    <label for="description"><b>Description</b></label>
+    <textarea
+      type="text"
+      placeholder="Enter product description"
+      name="description"
+      id="description"
+      required
+    ></textarea>
+  </div>
+
+  <div class="input_product_info">
+    <label for="price"><b>Price</b></label>
+    <input
+      type="text"
+      placeholder="Enter product price"
+      name="price"
+      id="price"
+      required
+    />
+  </div>
+
+  <div class="input_product_info">
+    <label for="expired_time"><b>Expired date</b></label>
+    <input
+      type="date"
+      placeholder="Enter product expired time"
+      name="expired_time"
+      id="expired_time"
+      required
+    />
+  </div>
+
+  <div class="input_product_info">
+    <button class="add_product_btn" type="submit">
+      <a href="/loyalty/categories/{{ id }}/products">Add</a>
+    </button>
+    <button class="add_product_btn">
+      <a href="/loyalty/categories/{{ id }}">Cancel</a>
+    </button>
+  </div>
+</form>
+
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}
