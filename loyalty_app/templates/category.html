@@ -1,10 +1,13 @@
-{% extends 'base.html' %}
-{% block content%} 
-<div class='pack_container'>
-    {% for cat in cats %}
-    <button class='package'><a href='#'>{{ cat.name }}</a></button>
-    {% endfor %}
-    <button class='add_btn'><a href="/loyalty/new_category">Add category</a></button>
+{% extends 'base.html' %} {% block content%}
+<div class="pack_container">
+  {% for cat in cats %}
+  <button class="package">
+    <a href="categories/{{ cat.id }}">{{ cat.name }}</a>
+  </button>
+  {% endfor %}
+  <button class="add_btn">
+    <a href="/loyalty/new_category">Add category</a>
+  </button>
 </div>
 
 {% endblock %}

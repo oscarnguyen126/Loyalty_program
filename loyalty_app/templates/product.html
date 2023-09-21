@@ -1,0 +1,9 @@
+{% extends base %} {% block content %}
+<h2>{{ cat.name }}</h2>
+<div>
+  {% for product in products %}
+  <div>{{ product.name }}</div>
+  {% endfor %}
+</div>
+
+{% endblock %}

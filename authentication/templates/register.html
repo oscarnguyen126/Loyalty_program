@@ -7,22 +7,22 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'register.css' %}">
+        <link rel="stylesheet" href="{% static 'auth.css' %}">
     </head>
     <body>
-        <center><h2>Register Form</h2></center>
+        <center><h2 style='color:white'>Register Form</h2></center>
         <form id="register_form" action='' method=POST>
             {% csrf_token %}
-                    <label for="username"><b>Username</b></label>
+                    <label for="username"><b>USERNAME</b></label>
                     <input class="input_regis" type="text" placeholder="Enter Username" id="username" name="username" required>
                 
-                    <label for="password"><b>Password</b></label>
+                    <label for="password"><b>PASSWORD</b></label>
                     <input class="input_regis" type="password" placeholder="Enter Password" id="password" name="password" required>
 
-                    <label for='identify_card'><b>Identify card</b></label>
+                    <label for='identify_card'><b>IDENTIFY NUMBER</b></label>
                     <input class="input_regis" type="number" placeholder="Enter identify number" id="identify_card" name="identify_card" required>
                     
-                    <label for="bday"><b>Birthday</b><label><br>
+                    <label for="bday"><b>BIRTHDAY</b><label><br>
                     <input class="input_regis" type="date" placeholder="Enter birthday" id="bday" name="bday">
 
                 <button type="submit">Register</button>

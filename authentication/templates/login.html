@@ -1,28 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'login.css' %}">
-    </head>
-    <body>
-        <center><h2>Login</h2></center>
-        <form id="login_form" action='' method=POST>
-            {% csrf_token %}
-                <label for="username"><b>Username</b></label>
-                <input class="input_infor" type="text" placeholder="Enter Username" name="username" required>
-            
-                <label for="password"><b>Password</b></label>
-                <input class="input_infor" type="password" placeholder="Enter Password" name="password" required>
-            
-                <button type="submit">Login</button>
-                <center><span>Forgot <a href="#">password?</a></span></center>
-                <center><a href="/auth/register">Register?</a></center>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'auth.css' %}" />
+  </head>
+  <body>
+    <center><h2 style="color: white">LOGIN</h2></center>
+    <form id="login_form" action="" method="POST">
+      {% csrf_token %}
+      <label for="username"><b>USERNAME</b></label>
+      <input
+        class="input_infor"
+        type="text"
+        placeholder="Enter Username"
+        name="username"
+        required
+      />
 
-        </form>
-    </body>
+      <label for="password"><b>PASSWORD</b></label>
+      <input
+        class="input_infor"
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        required
+      />
+
+      <button type="submit">Login</button>
+      <center>
+        <span>Forgot <a href="#">password?</a></span>
+      </center>
+      <center><a href="/auth/register">Register?</a></center>
+    </form>
+  </body>
 </html>
