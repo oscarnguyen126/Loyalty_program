@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser,_
+from django.contrib.auth.models import AbstractUser, _
+from phone_field import PhoneField
 
 
 class Province(models.Model):
@@ -11,13 +12,15 @@ class Province(models.Model):
 
 class City(models.Model):
     name = models.CharField()
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
-    
+
 
 class District(models.Model):
     name = models.CharField()
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
@@ -25,19 +28,10 @@ class District(models.Model):
 
 class Street(models.Model):
     name = models.CharField()
+    district = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
-
-
-class Phone(models.Model):
-    phone_number = models.CharField(null=True)
-
-
-class Bill(models.Model):
-    name = models.CharField()
-    pay_amount = models.DecimalField(max_digits=8, decimal_places=2)
-    bill_date = models.DateField()
 
 
 class User(AbstractUser):
@@ -51,13 +45,19 @@ class User(AbstractUser):
     start_time = models.DateField(auto_now=True)
     bday = models.DateField("Birth day")
     identify_card = models.IntegerField()
-    province_id = models.ForeignKey(Province, on_delete=models.CASCADE, null=True)
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
-    district_id = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
-    street_id = models.ForeignKey(Street, on_delete=models.CASCADE, null=True)
-    phone_id = models.ForeignKey(Phone, on_delete=models.CASCADE, null=True)
-    bill_ids = models.ForeignKey(Bill, on_delete=models.CASCADE, null=True)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, null=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
+    district = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
+    street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True)
+    phone = PhoneField(null=True, unique=True)
+    mobile = PhoneField(null=True, unique=True)
 
     def __str__(self):
         return self.name
 
+
+class Bill(models.Model):
+    name = models.CharField()
+    pay_amount = models.DecimalField(max_digits=8, decimal_places=2)
+    bill_date = models.DateField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<div class="profile_container">
+  <h2>Username: {{ user.username }}</h2>
+  <div class="profile_personal_info">
+    <div class="personal_info_block">
+      <p>Firstname: {{ user.firstname }}</p>
+      <p>Identify number: {{ user.identify_card }}</p>
+      <p>Join date: {{ user.start_time }}</p>
+    </div>
+    <div class="personal_info_block">
+      <p>Lastname: {{ user.lastname }}</p>
+      <p>Total point: {{ user.total_point }}</p>
+      <p>Accumulate point: {{ user.accumulate_point }}</p>
+      <p>Bonus point: {{ user.bonus_point }}</p>
+    </div>
+  </div>
+  <p>Contact</p>
+  <div class="profile_personal_info">
+    <div class="personal_info_block">
+      <p>Phone: {{ user.phone }}</p>
+      <p>Province: {{ user.province }}</p>
+      <p>City: {{ user.city }}</p>
+    </div>
+    <div class="personal_info_block">
+      <p>Mobile: {{ user.mobile }}</p>
+      <p>District: {{user.district }}</p>
+      <p>Street: {{ user.street }}</p>
+    </div>
+  </div>
+</div>
+<center>
+  <button class="update_profile_btn">
+    <a href="/auth/update_profile">Update profile</a>
+  </button>
+</center>
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}

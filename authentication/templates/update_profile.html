@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<div class="profile_container">
+  <h2>Username: {{ user.username }}</h2>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="profile_personal_info">
+      <div class="update_personal_info_block">
+        <label for="firstname">Firstname</label>
+        <input
+          class="update_info_input"
+          type="text"
+          placeholder="Enter firstname"
+          id="firstname"
+          name="firstname"
+          value="{{ user.firstname }}"
+        />
+
+        <label for="identify_card">Identify number</label>
+        <input
+          class="update_info_input"
+          type="number"
+          placeholder="Enter firstname"
+          id="identify_card"
+          name="identify_card"
+          value="{{ user.identify_card }}"
+        />
+
+        <p>Join date: {{ user.start_time }}</p>
+      </div>
+      <div class="update_personal_info_block">
+        <label for="lastname">Lastname</label>
+        <input
+          class="update_info_input"
+          type="text"
+          placeholder="Enter firstname"
+          id="lastname"
+          name="lastname"
+          value="{{ user.lastname }}"
+        />
+
+        <p>Total point: {{ user.total_point }}</p>
+        <p>Accumulate point: {{ user.accumulate_point }}</p>
+        <p>Bonus point: {{ user.bonus_point }}</p>
+      </div>
+    </div>
+    <p>Contact</p>
+    <div class="profile_personal_info">
+      <div class="update_personal_info_block">
+        <label for="phone">Phone</label>
+        <input
+          class="update_info_input"
+          type="number"
+          placeholder="Enter phone"
+          id="phone"
+          name="phone"
+          value="{{ user.phone }}"
+        />
+
+        <label for="province">Province</label>
+        <select class="update_info_input" id="province" name="province">
+          {% for province in provincies %}
+          <option value="{{ province }}">{{ province.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="city">City</label>
+        <select class="update_info_input" id="city" name="city">
+          {% for city in cities %}
+          <option value="{{ city }}">{{ city.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="update_personal_info_block">
+        <label for="mobile">Mobile</label>
+        <input
+          class="update_info_input"
+          type="number"
+          placeholder="Enter mobile"
+          id="mobile"
+          name="mobile"
+          value="{{ user.mobile }}"
+        />
+
+        <label for="district">District</label>
+        <select class="update_info_input" id="district" name="district">
+          {% for district in districts %}
+          <option value="{{ district.name }}">{{ district.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="street">Street</label>
+        <select class="update_info_input" id="street" name="street">
+          {% for street in strees %}
+          <option value="{{ street.name }}">{{ street.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+<center>
+  <button class="update_profile_btn" type="submit" style="color: white">
+    Save
+  </button>
+  <button class="update_profile_btn"><a href="/auth/profile">Cancel</a></button>
+</center>
+
+{% else %}
+<div class="anonymous">
+  <p>You are not logged in</p>
+  <div class="auth_btn_container">
+    <button class="auth_btn"><a href="{% url 'login' %}">Log In</a></button>
+    <button class="auth_btn">
+      <a href="{% url 'register' %}">Register</a>
+    </button>
+  </div>
+</div>
+{% endif %} {% endblock %}
