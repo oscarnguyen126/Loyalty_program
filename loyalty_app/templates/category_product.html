@@ -8,10 +8,10 @@
 <div class="product_container">
   {% for product in products %}
   <div class="product_info">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p>{{ product.expired_time }}</p>
-    <p>{{ product.price }} points</p>
+    <h3 class="product_attrs">{{ product.name }}</h3>
+    <p class="product_attrs">{{ product.description }}</p>
+    <p class="product_attrs">Expire date: {{ product.expired_time }}</p>
+    <p class="product_attrs">{{ product.price }} points</p>
     <button class="exchange_btn"><a href="#">Exchange</a></button>
   </div>
   {% endfor %}

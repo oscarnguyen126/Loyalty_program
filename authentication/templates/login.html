@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'auth.css' %}" />
+    <link rel="stylesheet" href="{% static 'authen.css' %}" />
   </head>
   <body>
-    <center><h2 style="color: white">LOGIN</h2></center>
+    <center><h2 style="color: black">LOGIN</h2></center>
+    {% if error %}
+    <center><p class="error_notify">{{ error }}</p></center>
+    {% endif %}
     <form id="login_form" action="" method="POST">
       {% csrf_token %}
       <label for="username"><b>USERNAME</b></label>
@@ -27,9 +30,15 @@
         type="password"
         placeholder="Enter Password"
         name="password"
+        id="password"
         required
       />
 
+      <left
+        ><span
+          ><input type="checkbox" onclick="showpassword()" />Show password</span
+        ></left
+      >
       <button type="submit">Login</button>
       <center>
         <span>Forgot <a href="#">password?</a></span>
@@ -38,3 +47,14 @@
     </form>
   </body>
 </html>
+
+<script>
+  function showpassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Category, Product
+from django.shortcuts import get_object_or_404
 
 
 def home(request):
@@ -7,9 +8,14 @@ def home(request):
 
 
 def list_product(request, id):
-    cat = Category.objects.get(id=id)
-    products = Product.objects.filter(category_id=id)
-    return render(request, "category_product.html", {"products": products, "cat": cat})
+    try:
+        cat = Category.objects.get(id=id)
+        products = Product.objects.filter(category_id=id)
+        return render(
+            request, "category_product.html", {"products": products, "cat": cat}
+        )
+    except:
+        return redirect("home")
 
 
 def new_product(request, id):
@@ -49,14 +55,14 @@ def new_category(request):
 
 
 def delete_category(request, id):
-    cat = Category.objects.get(id=id)
+    cat = get_object_or_404(Category, id=id)
     cat.delete()
     return redirect("/loyalty/categories")
 
 
 def update_category(request, id):
+    cat = get_object_or_404(Category, id=id)
     name = request.POST.get("name")
-    cat = Category.objects.get(id=id)
     cat.name = name
     cat.save()
     return redirect("/loyalty/categories")

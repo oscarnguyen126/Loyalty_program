@@ -49,8 +49,8 @@ class User(AbstractUser):
     city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
     district = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
     street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True)
-    phone = PhoneField(null=True, unique=True)
-    mobile = PhoneField(null=True, unique=True)
+    phone = PhoneField(null=True)
+    mobile = PhoneField(null=True)
 
     def __str__(self):
         return self.name

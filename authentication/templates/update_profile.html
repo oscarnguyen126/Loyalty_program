@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <div class="profile_container">
   <h2>Username: {{ user.username }}</h2>
-  <form action="" method="POST">
+
+  <form name="update_form" method="POST">
     {% csrf_token %}
     <div class="profile_personal_info">
       <div class="update_personal_info_block">
@@ -59,14 +60,14 @@
         <label for="province">Province</label>
         <select class="update_info_input" id="province" name="province">
           {% for province in provincies %}
-          <option value="{{ province }}">{{ province.name }}</option>
+          <option value="{{ province.id }}">{{ province.name }}</option>
           {% endfor %}
         </select>
 
         <label for="city">City</label>
         <select class="update_info_input" id="city" name="city">
           {% for city in cities %}
-          <option value="{{ city }}">{{ city.name }}</option>
+          <option value="{{ city.id }}">{{ city.name }}</option>
           {% endfor %}
         </select>
       </div>
@@ -84,26 +85,33 @@
         <label for="district">District</label>
         <select class="update_info_input" id="district" name="district">
           {% for district in districts %}
-          <option value="{{ district.name }}">{{ district.name }}</option>
+          <option value="{{ district.id }}">{{ district.name }}</option>
           {% endfor %}
         </select>
 
         <label for="street">Street</label>
         <select class="update_info_input" id="street" name="street">
           {% for street in strees %}
-          <option value="{{ street.name }}">{{ street.name }}</option>
+          <option value="{{ street.id }}">{{ street.name }}</option>
           {% endfor %}
         </select>
       </div>
     </div>
   </form>
+  <center>
+    <button
+      class="update_profile_btn"
+      type="submit"
+      form="update_form"
+      style="color: white"
+    >
+      Save
+    </button>
+    <button class="update_profile_btn">
+      <a href="/auth/profile">Cancel</a>
+    </button>
+  </center>
 </div>
-<center>
-  <button class="update_profile_btn" type="submit" style="color: white">
-    Save
-  </button>
-  <button class="update_profile_btn"><a href="/auth/profile">Cancel</a></button>
-</center>
 
 {% else %}
 <div class="anonymous">
