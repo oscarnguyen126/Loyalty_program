@@ -224,3 +224,53 @@ h1 {
   color: white;
   font-weight: bold;
 }
+
+.profile_container {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.profile_personal_info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+
+.personal_info_block {
+  width: 50%;
+}
+
+.update_profile_btn {
+  margin-top: 30px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.update_profile_btn:hover {
+  box-shadow: 0 0 20px #eee;
+}
+
+
+.update_profile_btn a {
+  color: white;
+  font-weight: bold;
+}
+
+
+.update_personal_info_block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 10px;
+}
+
+.update_info_input {
+  margin: 10px;
+}
