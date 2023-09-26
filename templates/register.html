@@ -1,45 +1,45 @@
 {% extends 'base.html' %} {% block content %}
-        <center><h2 style='color:black'>Register Form</h2></center>
-        {% if error %}
-            <center><p class="error_notify">{{ error }}</p></center>
-        {% endif %}
-        <form id="register_form" action='' method=POST>
-            {% csrf_token %}
-                    <label for="username"><b>USERNAME</b></label>
-                    <input class="input_regis" type="text" placeholder="Enter Username" id="username" name="username" required>
-                
-                    <label for="password"><b>PASSWORD</b></label>
-                    <input class="input_regis" type="password" placeholder="Enter Password" id="password" name="password" required>
-                    
-                    <div style="margin-bottom: 5px">
-                        <left
-                        ><span
-                          ><input type="checkbox" onclick="showpassword()" />show</span
-                        ></left
-                      >
-                    </div>
-                    
-                    <label for="confirm_password"><b>CONFIRM PASSWORD</b></label>
-                    <input class="input_regis" type="password" placeholder="Enter Password" id="confirm_password" name="confirm_password" required>
-                    
-                    <div style="margin-bottom: 5px">
-                        <left
-                        ><span
-                          ><input type="checkbox" onclick="showconfirmpassword()" />show</span
-                        ></left
-                      >
-                    </div>
-                    
-                    <label for='identify_card'><b>IDENTIFY NUMBER</b></label>
-                    <input class="input_regis" type="text" placeholder="Enter identify number" id="identify_card" name="identify_card" required>
-                    
-                    <label for="bday"><b>BIRTHDAY</b><label><br>
-                    <input class="input_regis" type="date" placeholder="Enter birthday" id="bday" name="bday">
+  <center><h2 style='color:black'>Register Form</h2></center>
+  {% if error %}
+      <center><p class="error_notify">{{ error }}</p></center>
+  {% endif %}
+  <form id="register_form" action='' method=POST>
+      {% csrf_token %}
+              <label for="username"><b>USERNAME</b></label>
+              <input class="input_regis" type="text" placeholder="Enter Username" id="username" name="username" required>
+          
+              <label for="password"><b>PASSWORD</b></label>
+              <input class="input_regis" type="password" placeholder="Enter Password" id="password" name="password" required>
+              
+              <div style="margin-bottom: 5px">
+                  <left
+                  ><span
+                    ><input type="checkbox" onclick="showpassword()" />show</span
+                  ></left
+                >
+              </div>
+              
+              <label for="confirm_password"><b>CONFIRM PASSWORD</b></label>
+              <input class="input_regis" type="password" placeholder="Enter Password" id="confirm_password" name="confirm_password" required>
+              
+              <div style="margin-bottom: 5px">
+                  <left
+                  ><span
+                    ><input type="checkbox" onclick="showconfirmpassword()" />show</span
+                  ></left
+                >
+              </div>
+              
+              <label for='identify_card'><b>IDENTIFY NUMBER</b></label>
+              <input class="input_regis" type="text" placeholder="Enter identify number" id="identify_card" name="identify_card" required>
+              
+              <label for="bday"><b>BIRTHDAY</b><label><br>
+              <input class="input_regis" type="date" placeholder="Enter birthday" id="bday" name="bday">
 
-                <button class="login_button" type="submit">Register</button>
-                <center><a href="/auth/login">Already have account?</a></center>
-        </form>
-        
+          <button class="login_button" type="submit">Register</button>
+          <center><a href="/auth/login">Already have account?</a></center>
+  </form>
+  
         
 <script>
   function showpassword() {

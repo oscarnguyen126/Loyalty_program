@@ -66,10 +66,10 @@ def profile(request):
 
 
 def update_profile(request):
-    # provincies = Province.objects.all()
-    # cities = City.objects.all()
-    # districts = District.objects.all()
-    # streets = Street.objects.all()
+    provincies = Province.objects.all()
+    cities = City.objects.all()
+    districts = District.objects.all()
+    streets = Street.objects.all()
     try:
         user = User.objects.get(id=request.user.id)
 
@@ -98,13 +98,13 @@ def update_profile(request):
         return render(
             request,
             "update_profile.html",
-            # {
-            #     "user": user,
-            #     "provincies": provincies,
-            #     "cities": cities,
-            #     "districts": districts,
-            #     "streets": streets,
-            # },
+            {
+                "user": user,
+                "provincies": provincies,
+                "cities": cities,
+                "districts": districts,
+                "streets": streets,
+            },
         )
 
     except:

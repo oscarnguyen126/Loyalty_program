@@ -5,6 +5,7 @@
 <button class="add_btn">
   <a href="/loyalty/categories/{{ cat.id }}/products">New product</a>
 </button>
+
 <div class="product_container">
   {% for product in products %}
   <div class="product_info">
@@ -12,7 +13,17 @@
     <p class="product_attrs">{{ product.description }}</p>
     <p class="product_attrs">Expire date: {{ product.expired_time }}</p>
     <p class="product_attrs">{{ product.price }} points</p>
-    <button class="exchange_btn"><a href="#">Exchange</a></button>
+    <button class="exchange_btn" onclick="openForm()">Exchange</button>
+    <div class="exchange_form" id="exchange_form">
+      <form method="POST">
+        {% csrf_token %}
+        <h4>{{ product.name }}</h4>
+        <p>Point required: {{ product.price }}</p>
+        <p>Point available: {{ user.total_point }}</p>
+        <button type="submit">Confirm</button>
+        <button onclick="closeForm()">Cancel</button>
+      </form>
+    </div>
   </div>
   {% endfor %}
 </div>
@@ -31,4 +42,16 @@
     </button>
   </div>
 </div>
-{% endif %} {% endblock %}
+{% endif %}
+
+<script>
+  function openForm() {
+    document.getElementById("exchange_form").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("exchange_form").style.display = "none";
+  }
+</script>
+
+{% endblock %}

@@ -20,4 +20,6 @@ urlpatterns = [
     path(
         "loyalty/categories/<int:id>/products", views.new_product, name="new products"
     ),
+    path("loyalty/terms_and_cons", views.terms_and_cons, name="terms"),
+    path("loyalty/contact", views.contact, name="contact")
 ]
