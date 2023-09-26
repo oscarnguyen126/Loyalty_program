@@ -66,3 +66,11 @@ def update_category(request, id):
     cat.name = name
     cat.save()
     return redirect("/loyalty/categories")
+
+
+def terms_and_cons(request):
+    return render(request, "about.html")
+
+
+def contact(request):
+    return render(request, "contact.html")
