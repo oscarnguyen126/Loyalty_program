@@ -44,13 +44,13 @@ class User(AbstractUser):
     bonus_point = models.IntegerField(default=0)
     start_time = models.DateField(auto_now=True)
     bday = models.DateField("Birth day")
-    identify_card = models.IntegerField()
-    province = models.ForeignKey(Province, on_delete=models.CASCADE, null=True)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
-    district = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
-    street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True)
-    phone = PhoneField(null=True)
-    mobile = PhoneField(null=True)
+    identify_card = models.CharField()
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+    district = models.ForeignKey(District, on_delete=models.CASCADE, null=True, blank=True)
+    street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True, blank=True)
+    phone = PhoneField(null=True, blank=True)
+    mobile = PhoneField(null=True, blank=True)
 
     def __str__(self):
         return self.name
