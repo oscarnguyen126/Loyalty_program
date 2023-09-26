@@ -91,27 +91,27 @@
 
         <label for="street">Street</label>
         <select class="update_info_input" id="street" name="street">
-          {% for street in strees %}
+          {% for street in streets %}
           <option value="{{ street.id }}">{{ street.name }}</option>
           {% endfor %}
         </select>
       </div>
     </div>
   </form>
-  <center>
-    <button
-      class="update_profile_btn"
-      type="submit"
-      form="update_form"
-      style="color: white"
-    >
-      Save
-    </button>
-    <button class="update_profile_btn">
-      <a href="/auth/profile">Cancel</a>
-    </button>
-  </center>
 </div>
+<center>
+  <button
+    class="update_profile_btn"
+    type="submit"
+    form="update_form"
+    style="color: white"
+  >
+    Save
+  </button>
+  <button class="update_profile_btn">
+    <a href="/auth/profile">Cancel</a>
+  </button>
+</center>
 
 {% else %}
 <div class="anonymous">

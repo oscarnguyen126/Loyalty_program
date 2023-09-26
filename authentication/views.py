@@ -38,20 +38,18 @@ def register(request):
         identify_card = request.POST.get("identify_card")
 
         if password == confirm_password:
-            try:
-                user = User.objects.get(username=username)
-                if user:
-                    error = "User already existed"
-                    return render(request, "register.html", {"error": error})
-            except:
-                user = User(
-                    username=username,
-                    password=make_password(password),
-                    bday=bday,
-                    identify_card=identify_card,
-                )
-                user.save()
-                return redirect("login")
+            user = User.objects.filter(username=username)
+            if len(user)>0:
+                error = "User already existed"
+                return render(request, "register.html", {"error": error})
+            user = User(
+                username=username,
+                password=make_password(password),
+                bday=bday,
+                identify_card=identify_card,
+            )
+            user.save()
+            return redirect("login")
 
         error = "Password and confirm password are different"
         return render(request, "register.html", {"error": error})
@@ -68,10 +66,10 @@ def profile(request):
 
 
 def update_profile(request):
-    provincies = Province.objects.all()
-    cities = City.objects.all()
-    districts = District.objects.all()
-    streets = Street.objects.all()
+    # provincies = Province.objects.all()
+    # cities = City.objects.all()
+    # districts = District.objects.all()
+    # streets = Street.objects.all()
     try:
         user = User.objects.get(id=request.user.id)
 
@@ -95,18 +93,18 @@ def update_profile(request):
             user.district = district
             user.street = street
             user.save()
-            return HttpResponse("aaa")
+            return redirect('/profile')
 
         return render(
             request,
             "update_profile.html",
-            {
-                "user": user,
-                "provincies": provincies,
-                "cities": cities,
-                "districts": districts,
-                "streets": streets,
-            },
+            # {
+            #     "user": user,
+            #     "provincies": provincies,
+            #     "cities": cities,
+            #     "districts": districts,
+            #     "streets": streets,
+            # },
         )
 
     except:
